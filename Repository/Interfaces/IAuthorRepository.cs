@@ -3,7 +3,7 @@ using Kotabko.Models;
 
 namespace Kotabko.Repository.Interfaces
 {
-    public interface IOrderRepository:IRepository<Order>
+    public interface IAuthorRepository : IRepository<Author>
     {
     }
 }
