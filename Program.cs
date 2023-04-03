@@ -1,5 +1,4 @@
 
-using AutoMapper;
 using Kotabko.DataAccess;
 using Kotabko.Repository.Classes;
 using Kotabko.Repository.Interfaces;
@@ -22,13 +21,17 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
 builder.Services.AddScoped<IBookRepository,BookRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
+<<<<<<< HEAD
 
 ///shopping card service
 builder.Services.AddScoped<IShoppingcardRepository,ShoppingcardRepository>();
 
 //Register Auto Mapper
 builder.Services.AddAutoMapper(typeof(Program));
+=======
+>>>>>>> 23cf3b2bc5f40efb1d5a8a06019f6dc85e8ebaa2
 var app = builder.Build();
 
 
