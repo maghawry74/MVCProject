@@ -24,6 +24,9 @@ builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IBookRepository,BookRepository>();
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 
+///shopping card service
+builder.Services.AddScoped<IShoppingcardRepository,ShoppingcardRepository>();
+
 //Register Auto Mapper
 builder.Services.AddAutoMapper(typeof(Program));
 var app = builder.Build();
