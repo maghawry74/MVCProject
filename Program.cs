@@ -1,4 +1,5 @@
 
+using AutoMapper;
 using Kotabko.DataAccess;
 using Kotabko.Repository.Classes;
 using Kotabko.Repository.Interfaces;
@@ -17,12 +18,14 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFramework
 
 //Registering Repositories
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-<<<<<<< HEAD
-builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-=======
-builder.Services.AddScoped<IBookRepository,BookRepository>();
 
->>>>>>> 68b957e12bbe3f12d73eea6334efd78a449520a5
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+
+builder.Services.AddScoped<IBookRepository,BookRepository>();
+builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
+
+//Register Auto Mapper
+builder.Services.AddAutoMapper(typeof(Program));
 var app = builder.Build();
 
 
