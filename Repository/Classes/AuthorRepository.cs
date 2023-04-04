@@ -25,7 +25,7 @@ namespace Kotabko.Repository.Classes
         {
             try
             {
-                Author? author = db.authors.Find(filter);
+                Author? author = db.authors.FirstOrDefault(filter);
                 if (author == null)
                     return false;
                 db.authors.Remove(author);
@@ -40,7 +40,7 @@ namespace Kotabko.Repository.Classes
 
         public Author? Find(Expression<Func<Author, bool>> filter)
         {
-           return db.authors.Find(filter);
+           return db.authors.FirstOrDefault(filter);
         }
 
         public IEnumerable<Author> GetAll()

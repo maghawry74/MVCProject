@@ -27,7 +27,10 @@
                         <a class="nav-link mx-2" href="#">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-2" href="#">Authors</a>
+                        <a class="nav-link mx-2" asp-controller="Author" asp-action="Index">Authors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-2" asp-action="Index" asp-controller="Category">Category</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto d-none d-lg-inline-flex align-items-center">
@@ -61,7 +64,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer p-5 bg-black text-muted">
+    <footer class="border-top footer p-5 bg-black text-muted " style="position:absolute;bottom:-200px">
         <div class="container">
             <div class="d-flex align-items-start justify-content-between row">
                 <div class="col-lg-3 col-md-6 col-sm-12">
@@ -115,6 +118,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
