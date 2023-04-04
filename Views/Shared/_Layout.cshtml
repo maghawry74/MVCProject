@@ -35,7 +35,8 @@
                 </ul>
                 <ul class="navbar-nav ms-auto d-none d-lg-inline-flex align-items-center">
                     <li class="nav-item mx-2">
-                        <a class="nav-link text-dark h5" href="" target="blank"><img src="~/icons/cart.png" /></a>
+                        <span class="count">0</span>
+                        <a class="nav-link text-dark h5"   asp-controller="ShoppingCard" asp-action="Index"><img src="~/icons/cart.png" /></a>
                     </li>
                     @{
                         if (User.Identity!.IsAuthenticated)
@@ -121,4 +122,25 @@
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+<<<<<<< HEAD
 </html>
+
+<style>
+     .count {
+        position: absolute;
+        vertical-align: text-top;
+        padding: 1px 3px;
+        border-radius: 5px;
+        line-height: 1;
+        font-size: 10px;
+        font-weight: 600;
+        text-align: center;
+        letter-spacing: 0;
+        color: #fff;
+        background-color: red;
+        min-width: 14px;
+    }
+</style>
+=======
+</html>
+>>>>>>> 23cf3b2bc5f40efb1d5a8a06019f6dc85e8ebaa2
