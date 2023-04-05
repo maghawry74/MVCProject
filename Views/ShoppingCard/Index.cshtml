@@ -1,0 +1,56 @@
+﻿<h1>Hello from shopping card view</h1>
+
+
+@*@model List<Products>*@
+
+@*<h1>Your Cart</h1>
+<br />
+<div class="Row">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </thead>*@
+     @*   <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><img src="/images/@item.Image" / width="200px" height="150px"></td>
+                    <td>@item.Name</td>
+                    <td>@item.Price</td>
+                    <td>@item.ProductColor</td>
+                    <td>
+                        <a asp-action="RemoveCart" asp-route-productId="@item.Id" class="btn btn-danger">
+                            <i class='far fa-trash-alt' style='font-size:1.6rem;color:white'></i>
+                        </a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="row">
+    <div class="col-9">
+        <a asp-action="Index" asp-controller="Home" class="btn btn-success">Back To Home</a>
+    </div>
+    <div class="col-3 text-right">
+        <h3>Total Amount</h3>
+        <h3>Grant Total: @Model.Sum(p=>p.Price)</h3>
+        <a asp-action="Index" asp-controller="Home" class="btn btn-info">Process To Checkout</a>
+    </div>
+</div>*@
+
+
+
+
+
+
+
+

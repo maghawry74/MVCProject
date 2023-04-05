@@ -1,0 +1,43 @@
+﻿@model Author
+
+<div class=" row">
+    <div class="col-12 text-dark mt-5 ">
+        <h2> Auther Details</h2>
+    </div>
+    <form style="border-style: ridge;">
+
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-2 mt-4">
+                        <label asp-for="Name" class="form-label"></label>
+                    </div>
+                    <div class="col-5 mt-4 ms-5">
+                        <input asp-for="Name" class="form-control " readonly="readonly">
+                    </div>
+                </div>
+
+                <!--  //////////////////////////////////////////-->
+                <div class="form-group row">
+                    <div class="col-2 mt-4">
+                        <label asp-for="Description" class="form-label"></label>
+                    </div>
+                    <div class="col-5 mt-4 ms-5">
+                        <textarea asp-for="Description" readonly="readonly" rows="10" cols="41"></textarea>
+                    </div>
+                </div>
+                <!--////////////////////////////////-->
+                <br />
+                <h4 class="text-danger">Do You Want To Delete This Auther</h4>
+                <div class="mt-4 mb-4">
+                    <a href="/Auther/DeleteComfirm/@Model.Id" class="btn btn-danger rounded-pill">Delete</a>
+                    <a asp-action="Index" class="btn btn-success rounded-pill"> Back To List</a>
+                </div>
+            </div>
+
+            <div class="col-3 mt-5 mb-2">
+                <img src="~/imgs/@Model.Image" width="100%" style="border-radius:5px;border:1px solid #efefef">
+            </div>
+        </div>
+    </form>
+</div>

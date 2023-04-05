@@ -1,0 +1,62 @@
+﻿@model List<Author>
+<br />
+<div class="col-12">
+    <h2 class="mb-4">Authors</h2>
+</div>
+<div class="card w-50 " ></div>
+<div class="card-body shadow p-3  bg-white rounded">
+    <div class="row ">
+        <div class="col-sm-5">
+            <a asp-action="New" class="btn btn-danger mt-2 mb-2 fw-bold rounded-pill">
+                <i class='fas fa-plus-circle' style='font-size:1rem;color:white'></i> New Author
+            </a>
+        </div>
+    </div>
+    <br />
+    <div>
+        <table class="table table-centered  dt-responsive  " id="myTable">
+            <thead class="table-light">
+                <tr>
+                    <th>Author Name</th>
+                    <th style="width:40%">Description</th>
+                    <th class="text-center">Image</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td class="text-center"><img src="/Imgs/@item.Image" alt="author-img" class="rounded me-3" height="200" /></td>
+                    <td>
+                        <a href="/Author/Edit/@item.Id" class="btn">
+                            <i class='fas fa-edit text-secondary' style='font-size:1.6rem'></i>
+                        </a>
+                        <a href="/Author/Delete/@item.Id" class="btn">
+                            <i class='far fa-trash-alt text-secondary' style='font-size:1.6rem'></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+@section Scripts
+    {
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'csv', 'excel', 'pdf', 'print'
+                ],
+                pageLength: 3
+
+            });
+        });
+
+    </script>
+    }
+

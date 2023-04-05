@@ -1,7 +1,10 @@
 ﻿using Kotabko.Models;
+<<<<<<< HEAD
 using Microsoft.AspNetCore.Authorization;
+=======
+using Kotabko.ViewsModels;
+>>>>>>> 4a67b3e4a831f247a45ad11b56897899cc9bfdad
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 
 namespace Kotabko.Controllers
 {
@@ -16,18 +19,61 @@ namespace Kotabko.Controllers
         [Authorize]
         public IActionResult Index()
         {
-            return View();
+            List<MainBookVM> list = new List<MainBookVM>()
+            {
+                new MainBookVM(){Author=new Author()
+                {
+                    Name="Author Name"
+                },
+                Image="33.jpg",
+                Price=25,
+                Rate=4,
+                Title="Book Title"
+                },
+                                new MainBookVM(){Author=new Author()
+                {
+                    Name="Author Name"
+                },
+                Image="33.jpg",
+                Price=25,
+                Rate=4,
+                Title="Book Title"
+                },                new MainBookVM(){Author=new Author()
+                {
+                    Name="Author Name"
+                },
+                Image="33.jpg",
+                Price=25,
+                Rate=4,
+                Title="Book Title"
+                },                new MainBookVM(){Author=new Author()
+                {
+                    Name="Author Name"
+                },
+                Image="33.jpg",
+                Price=25,
+                Rate=4,
+                Title="Book Title"
+                },                new MainBookVM(){Author=new Author()
+                {
+                    Name="Author Name"
+                },
+                Image="33.jpg",
+                Price=25,
+                Rate=4,
+                Title="Book Title"
+                },                new MainBookVM(){Author=new Author()
+                {
+                    Name="Author Name"
+                },
+                Image="33.jpg",
+                Price=25,
+                Rate=4,
+                Title="Book Title"
+                },
+            };
+            return View(list);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

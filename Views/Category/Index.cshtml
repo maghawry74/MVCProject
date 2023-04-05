@@ -1,0 +1,41 @@
+﻿@model List<Category>
+<br />
+<div class="col-12">
+    <h2 class="mb-4">Categories</h2>
+</div>
+<div class="card w-50"></div>
+<div class="card-body shadow p-3 mb-5 bg-white rounded">
+        <div class="row ">
+            <div class="col-sm-5">
+            <a asp-action="New" class="btn btn-danger mt-2 mb-2 fw-bold rounded-pill">
+                    <i class='fas fa-plus-circle' style='font-size:1rem;color:white'></i> New Category
+                </a>
+            </div>
+        </div>
+        <br />
+        <div>
+            <table class="table table-centered  dt-responsive  ">
+                <thead class="table-light">
+                    <tr >
+                        <th>category Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td >
+                        <a href="/Category/Edit/@item.Id" class="btn">
+                                <i class='fas fa-edit text-secondary' style='font-size:1.6rem'></i>
+                            </a>
+                        <a href="/Category/Delete/@item.Id" class="btn">
+                            <i class='far fa-trash-alt text-secondary' style='font-size:1.6rem'></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,8 @@
 ﻿using Kotabko.DataAccess;
 using Kotabko.Models;
 using Kotabko.Repository.Interfaces;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq.Expressions;
 
 namespace Kotabko.Repository.Classes
@@ -23,7 +25,7 @@ namespace Kotabko.Repository.Classes
         {
             try
             {
-                Category? categoery = Db?.categories?.Find(filter);
+                Category? categoery = Db?.categories?.FirstOrDefault(filter);
                 if (categoery == null) return false;
                 Db?.categories.Remove(categoery);
                 Db?.SaveChanges();
@@ -38,7 +40,7 @@ namespace Kotabko.Repository.Classes
 
         public Category? Find(Expression<Func<Category, bool>> filter)
         {
-            return Db?.categories.Find(filter);
+            return Db?.categories.FirstOrDefault(filter);
         }
 
         public IEnumerable<Category> GetAll()
@@ -59,5 +61,6 @@ namespace Kotabko.Repository.Classes
                 return false;
             }
         }
+       
     }
 }
