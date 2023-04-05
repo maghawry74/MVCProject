@@ -3,26 +3,31 @@ using Kotabko.DataAccess;
 using Kotabko.Repository.Classes;
 using Kotabko.Repository.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+//builder.Services.AddIdentity<ApplicationUser, IdentityRole>().
+//             AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
 });
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(
+    options => {options.Password.RequireUppercase = false;})
+    .AddEntityFrameworkStores<ApplicationDbContext>();
 
 //Registering Repositories
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-<<<<<<< HEAD
+
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-=======
+
 builder.Services.AddScoped<IBookRepository,BookRepository>();
 
->>>>>>> 68b957e12bbe3f12d73eea6334efd78a449520a5
 var app = builder.Build();
 
 
@@ -39,7 +44,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthorization();
 app.UseAuthorization();
 
 app.MapControllerRoute(
