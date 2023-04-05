@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Kotabko.styles.css" asp-append-version="true" />
+
+   @* <link rel="stylesheet" href="~/css/shop_css/plugin.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/shop_css/style.css" asp-append-version="true">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Images/shop_img/favicon.png" >
+
+    <link rel="stylesheet" href="~/shopicons/unicons.iconscout.com/release/v4.0.0/css/line.css" asp-append-version="true">*@
+
+    
 </head>
 <body>
     <nav class="navbar fs-4 navbar-expand-lg navbar-light container p-3">
@@ -56,10 +65,11 @@
             </div>
         </div>
     </nav>
-    <div class="container">
+    <div>
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+        
     </div>
 
     <footer class="border-top footer p-5 bg-black text-muted">
@@ -118,7 +128,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-<<<<<<< HEAD
+@*<<<<<<< HEAD*@
 </html>
 
 <style>
@@ -137,6 +147,6 @@
         min-width: 14px;
     }
 </style>
-=======
+@*=======*@
 </html>
->>>>>>> 23cf3b2bc5f40efb1d5a8a06019f6dc85e8ebaa2
+@*>>>>>>> 23cf3b2bc5f40efb1d5a8a06019f6dc85e8ebaa2*@
