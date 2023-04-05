@@ -18,7 +18,7 @@
             <div class=" collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto ">
                     <li class="nav-item">
-                        <a class="nav-link mx-2 active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link mx-2 active" aria-current="page" asp-action="index" asp-controller="Home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-2" href="#">Shop</a>
@@ -57,13 +57,13 @@
         </div>
     </nav>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="my-5 ">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer p-5 bg-black text-muted">
-        <div class="container">
+    <footer class="border-top bg-black text-muted">
+        <div class="container p-5">
             <div class="d-flex align-items-start justify-content-between row">
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <img src="~/imgs/logo.svg" />
@@ -118,7 +118,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-<<<<<<< HEAD
+
 </html>
 
 <style>
@@ -137,6 +137,5 @@
         min-width: 14px;
     }
 </style>
-=======
-</html>
->>>>>>> 23cf3b2bc5f40efb1d5a8a06019f6dc85e8ebaa2
+
+
