@@ -1,9 +1,9 @@
 ﻿using Kotabko.Models;
-<<<<<<< HEAD
-using Microsoft.AspNetCore.Authorization;
-=======
 using Kotabko.ViewsModels;
->>>>>>> 4a67b3e4a831f247a45ad11b56897899cc9bfdad
+
+using Microsoft.AspNetCore.Authorization;
+
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kotabko.Controllers

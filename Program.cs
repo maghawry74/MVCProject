@@ -26,11 +26,10 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-<<<<<<< HEAD
+
 
 builder.Services.AddScoped<IBookRepository,BookRepository>();
 
-=======
 
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -38,12 +37,14 @@ builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 
 
 ///shopping card service
-builder.Services.AddScoped<IShoppingcardRepository, ShoppingcardRepository>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped(s => ShoppingCardRepository.GetshoppingCard(s));
+builder.Services.AddSession();
 
 //Register Auto Mapper
 builder.Services.AddAutoMapper(typeof(Program));
 
->>>>>>> 4a67b3e4a831f247a45ad11b56897899cc9bfdad
+
 var app = builder.Build();
 
 
@@ -59,6 +60,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseSession();
 app.UseAuthorization();
 app.UseAuthorization();
 
