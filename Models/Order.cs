@@ -15,5 +15,5 @@ public class Order
     public bool Completed { get; set; }
     [Required]
     public DateTime CreatedAt { get; set; }
-    public ICollection<Book>? Books { get; set; }
+	public virtual List<OrderItem>? OrderItems { get; set; }
 }

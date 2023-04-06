@@ -1,0 +1,69 @@
+﻿@model Kotabko.ViewModel.LoginViewModel
+@{
+    Layout = "Register_Layout";
+}
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+
+<div class="head p-4 ">
+    <h1 class="fs-1">Sign In</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+        </div>
+        <div class="col-lg-6">
+            <form asp-action="Login">
+
+                <div class="form-group m-4">
+                    <label asp-for="userName" class="control-label m-1"></label>
+                    <input asp-for="userName" class="form-control" style="border-radius:50px" />
+                    <span asp-validation-for="userName" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group m-4">
+                    <label asp-for="password" class="control-label m-1"></label>
+                    <input asp-for="password" class="form-control" style="border-radius:50px" />
+                    <span asp-validation-for="password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group m-4 form-check" >
+                    <input class="form-check-input " asp-for="remmemberMe" />
+                    <label class="form-check-label m-2" style="font-size:15px">
+       
+                      Remember Me
+                    </label>
+        
+                </div>
+              
+
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <div class="form-group m-4">
+
+                    <input type="submit" class="control-label m-1" value="Login" style="border-radius:50px" />
+
+                </div>
+
+
+            </form>
+
+        </div>
+        <div class="col-lg-3">
+        </div>
+    </div>
+
+</div>
+
+
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

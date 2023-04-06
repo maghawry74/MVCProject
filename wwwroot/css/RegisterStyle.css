@@ -1,0 +1,20 @@
+.head {
+    background-color: #f0f0f0;
+    text-align:center;
+    justify-content: center;
+    align-items: center;
+}
+h1 {
+    font-weight: bold;
+    
+    font-size: 32px;
+}
+input {
+    font-size: 14px;
+    font-weight: 600;
+    width: 100%;
+    color: #fff;
+    background-color: #f65d4e;
+    border-color: #f65d4e;
+    padding: 17px 31px;
+}
