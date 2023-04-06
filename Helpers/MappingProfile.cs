@@ -4,12 +4,13 @@ using Kotabko.ViewsModels;
 
 namespace Kotabko.Helpers
 {
-    public class MappingProfile:Profile
+    public class MappingProfile : Profile
     {
         public MappingProfile()
         {
-           CreateMap<AuthorVM, Author>().ReverseMap();
+            CreateMap<AuthorVM, Author>().ReverseMap();
             CreateMap<BookViewModel, Book>().ReverseMap();
+            CreateMap<MainBookVM, Book>().ReverseMap();
         }
     }
 }
