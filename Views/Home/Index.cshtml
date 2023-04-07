@@ -1,4 +1,8 @@
-﻿@{
+﻿@model List<MainBookVM>
+@{
     ViewData["Title"] = "Home Page";
 }
 
+<partial name="Landing"/>
+
+<partial name="Main" model="@Model"/>

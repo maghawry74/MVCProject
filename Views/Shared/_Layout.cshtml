@@ -8,14 +8,11 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Kotabko.styles.css" asp-append-version="true" />
 
-   @* <link rel="stylesheet" href="~/css/shop_css/plugin.min.css" asp-append-version="true">
-    <link rel="stylesheet" href="~/css/shop_css/style.css" asp-append-version="true">
 
-    <link rel="icon" type="image/png" sizes="16x16" href="~/Images/shop_img/favicon.png" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css" />
 
-    <link rel="stylesheet" href="~/shopicons/unicons.iconscout.com/release/v4.0.0/css/line.css" asp-append-version="true">*@
-
-    
 </head>
 <body>
     <nav class="navbar fs-4 navbar-expand-lg navbar-light container p-3">
@@ -27,16 +24,22 @@
             <div class=" collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto ">
                     <li class="nav-item">
-                        <a class="nav-link mx-2 active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link mx-2 active" aria-current="page" asp-action="index" asp-controller="Home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-2" href="#">Shop</a>
+                        <a class="nav-link mx-2" asp-action="ShopIndex" asp-controller="Shop">Shop</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-2" href="#">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-2" href="#">Authors</a>
+                        <a class="nav-link mx-2" asp-controller="Author" asp-action="Index">Authors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-2" asp-action="Index" asp-controller="Category">Category</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link mx-2" asp-action="Index" asp-controller="Book">Books</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto d-none d-lg-inline-flex align-items-center">
@@ -65,15 +68,21 @@
             </div>
         </div>
     </nav>
+
     <div>
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3"></main>
+    </div>
+
+    <div class="container">
+        <main role="main" class="my-5 ">
+
             @RenderBody()
         </main>
         
     </div>
 
-    <footer class="border-top footer p-5 bg-black text-muted">
-        <div class="container">
+    <footer class="border-top bg-black text-muted">
+        <div class="container p-5">
             <div class="d-flex align-items-start justify-content-between row">
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <img src="~/imgs/logo.svg" />
@@ -126,13 +135,18 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-@*<<<<<<< HEAD*@
-</html>
-
 <style>
-     .count {
+    .count {
         position: absolute;
         vertical-align: text-top;
         padding: 1px 3px;
@@ -147,6 +161,9 @@
         min-width: 14px;
     }
 </style>
-@*=======*@
 </html>
-@*>>>>>>> 23cf3b2bc5f40efb1d5a8a06019f6dc85e8ebaa2*@
+
+
+
+
+

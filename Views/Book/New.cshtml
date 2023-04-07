@@ -1,0 +1,92 @@
+﻿@model BookViewModel
+@{
+    SelectList categories = new SelectList(Model.Categories, "Id", "Name");
+    SelectList Authors = new SelectList(Model.Authors, "Id", "Name");
+}
+<div class=" row">
+    <div class="col-12 text-dark mt-5 ">
+        <h2>Add New Book</h2>
+    </div>
+    <form asp-action="New" method="post" style="border-style: ridge;">
+        <h4 class="text-danger">@ViewBag.message</h4>
+        <div class="form-group row">
+            <div class="col-2 mt-4">
+                <label asp-for="Title" class="form-label"></label>
+            </div>
+            <div class="col-5 mt-4">
+                <input asp-for="Title" class="form-control ">
+            </div>
+            <span asp-validation-for="Title" class="text-danger"></span>
+            <!--  //////////////////////////////////////////-->
+            <div class="col-2 mt-4">
+                <label asp-for="Price" class="form-label"></label>
+            </div>
+            <div class="col-5 mt-4">
+                <input asp-for="Price" class="form-control ">
+            </div>
+            <span asp-validation-for="Price" class="text-danger"></span>
+            <!--  //////////////////////////////////////////-->
+            <div class="col-2 mt-4">
+                <label asp-for="Image" class="form-label"></label>
+            </div>
+            <div class="col-5 mt-4">
+                <input asp-for="Image" class="form-control " type="file">
+            </div>
+            <span asp-validation-for="Image" class="text-danger"></span>
+            <!--  //////////////////////////////////////////-->
+            <div class="col-2 mt-4">
+                <label asp-for="Rate" class="form-label"></label>
+            </div>
+            <div class="col-5 mt-4">
+                <input asp-for="Rate" class="form-control ">
+            </div>
+            <span asp-validation-for="Rate" class="text-danger"></span>
+            <!--  //////////////////////////////////////////-->
+            <div class="col-2 mt-4">
+                <label asp-for="IsAvaiable" class="form-label"></label>
+            </div>
+            <div class="col-5 mt-4">
+                <input asp-for="IsAvaiable">
+            </div>
+            <span asp-validation-for="IsAvaiable" class="text-danger"></span>
+            <!--  //////////////////////////////////////////-->
+            <div class="col-2 mt-4">
+                <label asp-for="Description" class="form-label"></label>
+            </div>
+            <div class="col-5 mt-4">
+                <textarea asp-for="Description" rows="10" cols="41"></textarea>
+            </div>
+            <span asp-validation-for="Description" class="text-danger"></span>
+            <!--  //////////////////////////////////////////-->
+            <div class="col-2 mt-4">
+                <label asp-for="CategoryId" class="form-label"></label>
+            </div>
+            <div class="col-5 mt-4">
+                <select asp-for="CategoryId" asp-items="categories" class="form-control">
+                    <option value="0"> --selectCategory--</option>
+                </select>
+            </div>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
+            <!--  //////////////////////////////////////////-->
+            <div class="col-2 mt-4">
+                <label asp-for="AuthorId" class="form-label"></label>
+            </div>
+            <div class="col-5 mt-4">
+                <select asp-for="AuthorId" asp-items="Authors" class="form-control">
+                    <option value="0"> --selecAuthor--</option>
+                </select>
+            </div>
+            <span asp-validation-for="AuthorId" class="text-danger"></span>
+            <!--////////////////////////////////-->
+            <div class="mt-4 mb-4">
+                <button type="submit" class="btn btn-danger">Add</button>
+                <a asp-action="Index" asp-controller="Book" class="btn btn-secondary"> Back To List</a>
+            </div>
+        </div>
+    </form>
+</div>
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial"></partial>
+}
+

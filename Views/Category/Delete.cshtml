@@ -1,6 +1,6 @@
 ﻿@model Category
 <div class=" row">
-    <div class="col-12 text-info mt-5 ">
+    <div class="col-12 text-dark mt-5 ">
         <h2>Delete Category</h2>
     </div>
     <form style="border-style: ridge;">
@@ -11,6 +11,7 @@
             <div class="col-5 mt-4">
                 <input asp-for="Name" class="form-control " readonly="readonly">
             </div>
+            <h4 class="text-danger">Do You Want To Delete This Ctegory</h4>
           <div class="mt-4 mb-4">
                 <a href="/Category/FinalDelete/@Model.Id" class="btn btn-danger rounded-pill">Delete</a>
                 <a asp-action="Index" class="btn btn-success rounded-pill"> Back To List</a>
