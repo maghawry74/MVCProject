@@ -23,7 +23,7 @@ namespace Kotabko.Controllers
         public IMapper Mapper { get; }
 
 
-        [Authorize]
+        
 
         public IActionResult Index()
         {
