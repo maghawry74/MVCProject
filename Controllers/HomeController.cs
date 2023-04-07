@@ -1,10 +1,6 @@
 ﻿using AutoMapper;
 using Kotabko.Repository.Interfaces;
 using Kotabko.ViewsModels;
-
-using Microsoft.AspNetCore.Authorization;
-
-
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kotabko.Controllers
@@ -19,11 +15,10 @@ namespace Kotabko.Controllers
             Mapper = mapper;
         }
 
-
         public IMapper Mapper { get; }
 
 
-        
+        [Authorize]
 
         public IActionResult Index()
         {
