@@ -8,9 +8,12 @@
     <link rel="stylesheet" href="~/lib/bootstrap/Style.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Kotabko.styles.css" asp-append-version="true" />
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css" />
+
 </head>
 <body>
     <nav class="navbar fs-4 navbar-expand-lg navbar-light container p-3">
@@ -25,7 +28,7 @@
                         <a class="nav-link mx-2 active" aria-current="page" asp-action="index" asp-controller="Home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-2" href="#">Shop</a>
+                        <a class="nav-link mx-2" asp-action="ShopIndex" asp-controller="Shop">Shop</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-2" href="#">About Us</a>
@@ -66,10 +69,17 @@
             </div>
         </div>
     </nav>
+
+    <div>
+        <main role="main" class="pb-3"></main>
+    </div>
+
     <div class="container">
         <main role="main" class="my-5 ">
+
             @RenderBody()
         </main>
+        
     </div>
 
     <footer class="border-top bg-black text-muted ">
@@ -136,11 +146,8 @@
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-
-</html>
-
 <style>
-     .count {
+    .count {
         position: absolute;
         vertical-align: text-top;
         padding: 1px 3px;
@@ -155,4 +162,11 @@
         min-width: 14px;
     }
 </style>
+
+</html>
+
+
+
+
+
 

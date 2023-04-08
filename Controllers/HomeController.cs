@@ -22,7 +22,6 @@ namespace Kotabko.Controllers
 
         public IMapper Mapper { get; }
 
-
         
 
         public IActionResult Index()

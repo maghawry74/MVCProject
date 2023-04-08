@@ -1,0 +1,58 @@
+﻿@model ShopViewModel
+@{
+    ViewData["Title"] = "ShopIndex";
+
+}
+<div class="shop_page">
+
+    <section class="shop_section">
+        <div class="my-title d-flex">
+            <div class="my-main position-relative w-100">
+                <div class="d-flex justify-content-between ">
+                    <div class="right-part text-uppercase fs-1 fw-bold">Shop </div>
+                    <div class="lift-part mt-auto mb-auto ">
+                        <a class="text-decoration-none fs-6 fw-light" asp-action="Index" asp-controller="Home">HOME</a>                        
+                        @*<i class="fa-sharp fa-arrow-right fa-sm" style="color: #e13623;"></i>*@
+                        <i class="fs-6 fw-light">SHOP</i>
+                    </div>   
+                </div>                 
+            </div>
+        </div>
+    </section>
+    <section class="content container d-flex">
+        <div class="content-row col-12 row">
+            <!--lift-content-->
+            <partial name="SecondryShop" model="@Model"/>                
+
+            <!--right-content-->
+            <partial name="MainShop" model="@Model.books" />
+
+        </div>
+    </section> 
+</div>
+<style>
+    /* Title Section*/
+    .shop_section {
+        background-color: #f0f0f0;
+        padding: 0 30px;
+    }
+
+    .my-title {
+        min-height: 200px;
+        position: relative;
+        box-sizing: border-box;
+        align-items: center;
+        padding: 0 20px;
+    }
+    a:hover{
+        color:red;
+    }
+</style>
+  
+     
+
+    
+
+
+
+

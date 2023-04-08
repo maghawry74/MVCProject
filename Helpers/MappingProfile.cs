@@ -11,6 +11,7 @@ namespace Kotabko.Helpers
             CreateMap<AuthorVM, Author>().ReverseMap();
             CreateMap<BookViewModel, Book>().ReverseMap();
             CreateMap<MainBookVM, Book>().ReverseMap();
+            CreateMap<CategoryVM, Category>().ReverseMap();
         }
     }
 }
