@@ -9,9 +9,12 @@ namespace Kotabko.DataAccess
         public ApplicationDbContext(DbContextOptions options) : base(options) { }
 
         public DbSet<Book> books { get; set; }
-        public DbSet<Order> orders { get; set; }
         public DbSet<Category> categories { get; set; }
         public DbSet<Author> authors { get; set; }
+		public DbSet<Order> orders { get; set; }
+		public DbSet<OrderItem> orderItems { get; set; }
+		public DbSet<ShoppingCardItem> shoppingCardItems { get; set; }
+	
 
-    }
+	}
 }

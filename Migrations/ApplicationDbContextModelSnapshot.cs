@@ -22,21 +22,6 @@ namespace Kotabko.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("BookOrder", b =>
-                {
-                    b.Property<int>("BooksId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OrdersId")
-                        .HasColumnType("int");
-
-                    b.HasKey("BooksId", "OrdersId");
-
-                    b.HasIndex("OrdersId");
-
-                    b.ToTable("BookOrder");
-                });
-
             modelBuilder.Entity("Kotabko.DataAccess.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -208,6 +193,9 @@ namespace Kotabko.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("BookId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Completed")
                         .HasColumnType("bit");
 
@@ -220,9 +208,65 @@ namespace Kotabko.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BookId");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("orders");
+                });
+
+            modelBuilder.Entity("Kotabko.Models.OrderItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("orderItems");
+                });
+
+            modelBuilder.Entity("Kotabko.Models.ShoppingCardItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ShoppingCardId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.ToTable("shoppingCardItems");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -358,21 +402,6 @@ namespace Kotabko.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("BookOrder", b =>
-                {
-                    b.HasOne("Kotabko.Models.Book", null)
-                        .WithMany()
-                        .HasForeignKey("BooksId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Kotabko.Models.Order", null)
-                        .WithMany()
-                        .HasForeignKey("OrdersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Kotabko.Models.Book", b =>
                 {
                     b.HasOne("Kotabko.Models.Author", "Author")
@@ -394,6 +423,10 @@ namespace Kotabko.Migrations
 
             modelBuilder.Entity("Kotabko.Models.Order", b =>
                 {
+                    b.HasOne("Kotabko.Models.Book", null)
+                        .WithMany("Orders")
+                        .HasForeignKey("BookId");
+
                     b.HasOne("Kotabko.DataAccess.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
@@ -401,6 +434,36 @@ namespace Kotabko.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Kotabko.Models.OrderItem", b =>
+                {
+                    b.HasOne("Kotabko.Models.Book", "Book")
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Kotabko.Models.Order", "Order")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+
+                    b.Navigation("Order");
+                });
+
+            modelBuilder.Entity("Kotabko.Models.ShoppingCardItem", b =>
+                {
+                    b.HasOne("Kotabko.Models.Book", "Book")
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -459,9 +522,19 @@ namespace Kotabko.Migrations
                     b.Navigation("Books");
                 });
 
+            modelBuilder.Entity("Kotabko.Models.Book", b =>
+                {
+                    b.Navigation("Orders");
+                });
+
             modelBuilder.Entity("Kotabko.Models.Category", b =>
                 {
                     b.Navigation("books");
+                });
+
+            modelBuilder.Entity("Kotabko.Models.Order", b =>
+                {
+                    b.Navigation("OrderItems");
                 });
 #pragma warning restore 612, 618
         }

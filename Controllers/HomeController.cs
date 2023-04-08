@@ -1,4 +1,5 @@
-﻿using Kotabko.Models;
+﻿using AutoMapper;
+using Kotabko.Repository.Interfaces;
 using Kotabko.ViewsModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,69 +7,21 @@ namespace Kotabko.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IBookRepository bookRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IBookRepository bookRepository, IMapper mapper)
         {
-            _logger = logger;
+            this.bookRepository = bookRepository;
+            Mapper = mapper;
         }
+
+        public IMapper Mapper { get; }
+        
 
         public IActionResult Index()
         {
-            List<MainBookVM> list = new List<MainBookVM>()
-            {
-                new MainBookVM(){Author=new Author()
-                {
-                    Name="Author Name"
-                },
-                Image="33.jpg",
-                Price=25,
-                Rate=4,
-                Title="Book Title"
-                },
-                                new MainBookVM(){Author=new Author()
-                {
-                    Name="Author Name"
-                },
-                Image="33.jpg",
-                Price=25,
-                Rate=4,
-                Title="Book Title"
-                },                new MainBookVM(){Author=new Author()
-                {
-                    Name="Author Name"
-                },
-                Image="33.jpg",
-                Price=25,
-                Rate=4,
-                Title="Book Title"
-                },                new MainBookVM(){Author=new Author()
-                {
-                    Name="Author Name"
-                },
-                Image="33.jpg",
-                Price=25,
-                Rate=4,
-                Title="Book Title"
-                },                new MainBookVM(){Author=new Author()
-                {
-                    Name="Author Name"
-                },
-                Image="33.jpg",
-                Price=25,
-                Rate=4,
-                Title="Book Title"
-                },                new MainBookVM(){Author=new Author()
-                {
-                    Name="Author Name"
-                },
-                Image="33.jpg",
-                Price=25,
-                Rate=4,
-                Title="Book Title"
-                },
-            };
-            return View(list);
+            var BooksVM = Mapper.Map<List<MainBookVM>>(bookRepository.GetAll());
+            return View(BooksVM);
         }
 
     }

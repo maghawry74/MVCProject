@@ -1,0 +1,279 @@
+﻿@model ShopViewModel
+<!--lift-content-->
+<div class="lift-content col-lg-3  d-flex">
+    <div class="right-content-rows row">
+        <div class="genre col-lg-12 ">
+            <div class="genre-content">
+                <span>
+                    Genre
+                </span>
+                <ul>
+                    @foreach (var item in Model.categoryVMs)
+                    {
+                        <li><a href="#">@item.Name</a></li>                        
+                    }
+                </ul>                   
+            </div>
+        </div>
+
+        <div class="author col-lg-12 ">
+            <div class="author-content">
+                <span>
+                    Authors
+                </span>
+                <ul>
+                    @foreach (var item in Model.authorVMs)
+                    {
+                        <li>
+                            <div><a asp-action="GetAuthor" asp-controller="Shop">@item.Name</a> </div>
+                            <div class="coun">(5) </div>
+                        </li>
+                    }
+                   
+                </ul>
+
+            </div>
+        </div>       
+
+        <div class="review col-lg-12 ">
+            <div class="review-content ">
+                <span>
+                    Review Ratings
+                </span>
+                <ul class="m-0 p-0">
+
+                    <li>
+                        <div class="container">
+                            <div class="d-flex">
+                                <div>
+                                    <a href="#">
+                                        <div class="mt-1 justify-content-between align-items-center  ">
+
+                                            <div class="small-ratings d-flex m-2">
+                                                <i class="fa fa-star rating-color mx-1"></i>
+                                                <i class="fa fa-star rating-color mx-1"></i>
+                                                <i class="fa fa-star rating-color mx-1"></i>
+                                                <i class="fa fa-star rating-color mx-1"></i>
+                                                <i class="fa fa-star rating-color mx-2"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="coun ">(5) </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="container">
+                            <div class="d-flex">
+                                <div>
+                                    <a href="#">
+                                        <div class="mt-1 justify-content-between align-items-center  ">
+
+                                            <div class="small-ratings d-flex m-2">
+                                                <i class="fa fa-star rating-color mx-1"></i>
+                                                <i class="fa fa-star rating-color mx-1"></i>
+                                                <i class="fa fa-star rating-color mx-1"></i>
+                                                <i class="fa fa-star  mx-1"></i>
+                                                <i class="fa fa-star mx-2"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="coun ">(3) </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="container">
+                            <div class="d-flex">
+                                <div>
+                                    <a href="#">
+                                        <div class="mt-1 justify-content-between align-items-center  ">
+
+                                            <div class="small-ratings d-flex m-2">
+                                                <i class="fa fa-star rating-color mx-1"></i>
+                                                <i class="fa fa-star rating-color mx-1"></i>
+                                                <i class="fa fa-star rating-color mx-1"></i>
+                                                <i class="fa fa-star rating-color mx-1"></i>
+                                                <i class="fa fa-star rating-color mx-2"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="coun ">(5) </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="container">
+                            <div class="d-flex">
+                                <div>
+                                    <a href="#">
+                                        <div class="mt-1 justify-content-between align-items-center  ">
+
+                                            <div class="small-ratings d-flex m-2">
+                                                <i class="fa fa-star rating-color mx-1"></i>
+                                                <i class="fa fa-star rating-color mx-1"></i>
+                                                <i class="fa fa-star rating-color mx-1"></i>
+                                                <i class="fa fa-star rating-color mx-1"></i>
+                                                <i class="fa fa-star mx-2"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="coun ">(4) </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+            
+
+        </div>             
+
+    </div>
+</div>
+
+
+<!--Style-->
+<style>
+    /* lift Section*/
+    * {
+        box-sizing: border-box;
+    }
+
+   .lift-part {
+        box-sizing: border-box;
+        font-size: 12px;
+        margin-top: auto;
+        text-transform: uppercase;
+        margin-bottom: auto;
+        font-weight: 500;
+    }
+
+        .lift-part a {
+            color: var(--light);
+        }
+
+        .lift-part i {
+            color: red;
+            margin: auto 15px;
+        }
+
+        
+    /* content style*/
+
+    .content {
+        margin-top: 60px;
+        margin-bottom: 40px;
+        outline: none;
+        box-sizing: border-box;
+    }
+    /* lift content style*/
+    .lift-content {
+        width: 300px;
+        float: left;
+        margin-bottom: 1.618em;       
+        font-size: 14px;
+        line-height: 1.714;
+        font-weight: 300;
+        text-rendering: optimizeLegibility;
+    }
+    /*All Elements in lift side*/
+    /* 1-Gerne*/
+    .genre-content, .author-content,.review-content, .featured-content {
+        padding: 25px 40px 40px;
+        border: 1px solid #e6e6e6;
+        border-radius: 15px;
+        margin-bottom: 30px;
+    }
+
+
+ .genre-content span, .author-content span, .review-content span, .featured-content span {
+            margin-left: -40px;
+            margin-right: -40px;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-top: 0;
+            border-bottom: 1px solid #e6e6e6;
+            font-size: 16px;
+            line-height: 1.5;
+            font-weight: 600;
+            color: #444444;
+            display: block;
+            font-family: Cairo;
+            line-height: 1.23;
+ }
+
+
+ .genre-content ul, .featured-content ul {
+            margin-bottom: 0;
+            margin-left: 0;
+            list-style: none;
+ }
+
+ .genre-content ul li, .featured-content ul li
+ {
+                margin-bottom: 1em;
+                line-height: 1.41575em;
+                list-style: none;
+ }
+ .genre-content ul li a, .author-content ul li a {
+                    color: #444444;
+                    text-decoration: none;
+                    background-color: #00000000;
+                    line-height: 1.41575em;
+                    font-family: Sora;
+ }
+ .genre-content ul li ::before {
+                    font-family: bookory-icon;
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                    display: inline-block;
+                    font-style: normal;
+                    font-variant: normal;
+                    font-weight: 400;
+                    line-height: 1;
+                    vertical-align: middle;
+                    content: "";
+                    margin-right: 8px;
+                    margin-top: -2px;
+ }        
+ 
+    ul li a:hover {
+        color: red;
+    }
+
+    ul li div a:hover {
+        color: red;
+    }
+    /* 2-Author*/
+    .author-content ul li, .review-content ul li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        list-style: none;
+        margin-top: 0px;
+    }
+    .author-content ul li a {
+            flex: 1;
+            color: #000000;
+    }    
+    /* 4-Review Rating*/
+    .rating-color {
+        color: #fbc634 !important;
+    }
+
+    .small-ratings i {
+        color: #cecece;
+    }
+   
+    /* 5-Featured*/
+    .side {
+        border-radius: 1rem
+    }
+</style>
