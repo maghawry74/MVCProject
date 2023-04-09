@@ -30,11 +30,8 @@ builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
 builder.Services.AddScoped<IBookRepository,BookRepository>();
 
-
-builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
-
 
 ///shopping card service
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -45,7 +42,13 @@ builder.Services.AddSession();
 builder.Services.AddAutoMapper(typeof(Program));
 
 
+
+
+
 var app = builder.Build();
+
+
+
 
 
 // Configure the HTTP request pipeline.

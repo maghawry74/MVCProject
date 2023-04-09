@@ -1,6 +1,7 @@
 ﻿using Kotabko.DataAccess;
 using Kotabko.Models;
 using Kotabko.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace Kotabko.Repository.Classes
@@ -59,9 +60,39 @@ namespace Kotabko.Repository.Classes
             }
         }
 
-      
+        public async Task<List<Order>> GetOrderbyUserIdAsync(string userId)
+        {
+            var orders = await Db.orders.Include(a => a.OrderItems).ThenInclude(b => b.Book).Where(n => n.UserId == userId).ToListAsync();
+            return orders;
+        }
 
-       
-       
+        public async Task StoreOrderAsync(List<ShoppingCardItem> items, string UserId)
+        {
+            var order = new Order()
+            {
+                UserId = UserId,
+ 
+
+            };
+            await Db.orders.AddAsync(order);
+            await Db.SaveChangesAsync();
+
+            foreach (var item in items)
+            {
+                var orderitem = new OrderItem
+                {
+                    Amount = item.Amount,
+                    BookId = item.Book.Id,
+                    OrderId = order.Id,
+                    Price = item.Book.Price
+
+                };
+                await Db.orderItems.AddAsync(orderitem);
+            }
+            await Db.SaveChangesAsync();
+        }
+
+
+
     }
 }
