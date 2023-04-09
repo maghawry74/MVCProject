@@ -73,9 +73,8 @@ namespace Kotabko.Controllers
 			var items = ShoppingCardRepository.GetShoppingCardItems();
 			string UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 			//string UserEmailAddress = "mahmoudsallam";
-			await orderRepository.StoreOrderAsync(items, UserId/*, UserEmailAddress*/);
+			await orderRepository.StoreOrderAsync(items, UserId);
 			await ShoppingCardRepository.ClearShoppingCardAsync();
-
 			return View("Ordercompleted");
 		}
 
