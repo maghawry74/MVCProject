@@ -1,15 +1,31 @@
-﻿@model List<MainBookVM> 
+﻿@model ShopViewModel
  <!--right-content-->
+
 <div class="right-content col-lg-9 col-md-12 col-sm-12 d-flex">
-  <div class="lift-content-rows row">        
-    @foreach(var item in Model)
-    { 
-      <div class="col1 col-lg-4 col-md-4 col-sm-6">
-        <partial name="ShowBookVM" model="@item"></partial>
-        <div class="lin mb-4 mt-1"></div>
-      </div>         
-    }       
-  </div>
+  <div class="lift-content-rows row">
+        @if (Model.books?.Count() >= 6)
+        {
+            @for (int item = 0; item < 6; item++)
+            {
+                <div class="col1 col-lg-4 col-md-4 col-sm-6">
+                    <partial name="ShowBookVM" model="Model.books[item]"></partial>
+                    <div class="lin mb-4 mt-1"></div>
+                </div>
+            }
+
+        }
+        else
+        {
+            @for (int item = 0; item < Model.books?.Count(); item++)
+            {
+                <div class="col1 col-lg-4 col-md-4 col-sm-6">
+                    <partial name="ShowBookVM" model="Model.books[item]"></partial>
+                    <div class="lin mb-4 mt-1"></div>
+                </div>
+            }
+        }
+
+    </div>
  </div>
  <style>
      .lin{

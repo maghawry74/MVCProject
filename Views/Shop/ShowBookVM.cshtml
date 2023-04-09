@@ -3,9 +3,9 @@
     <img src="~/imgs/@Model.Image" class="card-img-top img" alt="BookImage">
   <div class="card-body mx-3">
         <a class="card-title pt-2" asp-action=" " asp-controller=" " >
-            <h5 class="pt-2">
+            <p class="pt-2 fw-bolder fs-5 color">
                 @Model.Title
-            </h5>
+            </p>
         </a>        
          <div class="d-flex align-items-center gap-1">
             @for(int i=0; i<Model.Rate; i++){
@@ -15,8 +15,8 @@
             }
            <p class="d-block pt-2 mb-2 fs-5">@Model.Rate</p>
          </div>
-        <a class="pt-1" asp-action="GetAuthor" asp-controller="Shop">@Model.Author?.Name</a>
-        <h6 class="color pt-1">$@Model.Price</h6>
+        <a class="pt-1 link-color" asp-action="GetAuthor" asp-controller="Shop">@Model.Author?.Name</a>
+        <h4 class="pt-1 btn-color fw-bolder">$@Model.Price</h4>
         <a class=" my-2 btn btn-warning" asp-action="Index" asp-controller="ShoppingCard">Shop</a>
   </div>
 </div>
@@ -27,13 +27,16 @@
         border-radius:1.5rem;   
     }
     a{
-        color: #444444;
+        color: #999999;
         text-decoration: none;
     }
     .color{
-        color:red;
+        color:black;
     }
-</style>
+    .btn-color{
+        color: #F65D4E;
+    }
+    </style>
         
 
        
