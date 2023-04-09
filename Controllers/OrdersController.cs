@@ -1,7 +1,10 @@
-﻿using Kotabko.Repository.Classes;
+﻿using Kotabko.Models;
+using Kotabko.Repository.Classes;
 using Kotabko.Repository.Interfaces;
 using Kotabko.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Kotabko.Controllers
 {
@@ -9,11 +12,13 @@ namespace Kotabko.Controllers
 	{
 		private readonly IBookRepository bookRepository;
 		private readonly ShoppingCardRepository ShoppingCardRepository;
+		private readonly IOrderRepository orderRepository; 
 
-        public OrdersController(IBookRepository bookRepository, ShoppingCardRepository ShoppingCardRepository)
+        public OrdersController(IBookRepository bookRepository, ShoppingCardRepository ShoppingCardRepository , IOrderRepository orderRepository)
         {
 			this.bookRepository = bookRepository;
 			this.ShoppingCardRepository = ShoppingCardRepository;
+			this.orderRepository = orderRepository;
             
         }
         public IActionResult Index()
@@ -62,7 +67,16 @@ namespace Kotabko.Controllers
 			}
 			return RedirectToAction("ShoppingCard");
 		}
+		[Authorize]
+		public async Task<IActionResult> CompleteOrder()
+		{
+			var items = ShoppingCardRepository.GetShoppingCardItems();
+			string UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+			//string UserEmailAddress = "mahmoudsallam";
+			await orderRepository.StoreOrderAsync(items, UserId);
+			await ShoppingCardRepository.ClearShoppingCardAsync();
+			return View("Ordercompleted");
+		}
 
-
-	}
+    }
 }

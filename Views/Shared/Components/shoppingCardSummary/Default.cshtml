@@ -1,0 +1,41 @@
+﻿@model int;
+@if (Model > 0)
+{
+	<li class="nav-item">
+
+        <a class="cart-icon" asp-controller="Orders" asp-action="ShoppingCard">
+            <i  class="fa fa-shopping-cart text-dark"></i>
+       
+            <span class="cart-count">@Model</span>
+		</a>
+
+
+		@*<div  class="cart-icon">
+			<i class="fa fa-shopping-cart"></i>
+            <span class="cart-count">@Model</span>
+		</div>*@
+
+	</li>
+}
+
+<style>
+
+    cart-icon {
+        position: relative;
+        display: inline-block;
+    }
+
+    .cart-count {
+        position: absolute;
+        top: 15px;
+        right: 340px;
+        background-color:  orangered ;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        font-size: 12px;
+        line-height: 20px;
+    }
+</style>

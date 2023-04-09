@@ -99,9 +99,17 @@ namespace Kotabko.Repository.Classes
 			return total;
 		}
 
+		public async Task ClearShoppingCardAsync()
+		{
+			var items = await _db.shoppingCardItems.Where(a => a.ShoppingCardId == ShoppingCardId).
+				ToListAsync();
+			_db.shoppingCardItems.RemoveRange(items);
+			await _db.SaveChangesAsync();
+			
+		}
 
 
 
 
-	}
+    }
 }
