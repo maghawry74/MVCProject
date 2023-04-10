@@ -26,8 +26,6 @@
                                     <hr class="my-4">
 									@foreach (var item in Model.ShoppingCard.ShoppingCardItems)
 									{
-
-
 										<div class="row mb-4 d-flex justify-content-between align-items-center">
 											<div class="col-md-2 col-lg-2 col-xl-2">
 												<img src="/Imgs/@item.Book.Image"
@@ -172,7 +170,7 @@
             },
             onAuthorize: function (data, actions) {
                 return actions.payment.execute().then(function(){
-                        var url = '@Url.Action("CompleteOrde" , "Orders" , new { })';
+                        var url = '@Url.Action("CompleteOrder" , "Orders" , new { })';
                         window.location.href=url;
                 });
             }

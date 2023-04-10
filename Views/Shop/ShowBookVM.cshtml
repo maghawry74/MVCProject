@@ -17,7 +17,7 @@
          </div>
         <a class="pt-1" asp-action="GetAuthor" asp-controller="Shop">@Model.Author?.Name</a>
         <h6 class="color pt-1">$@Model.Price</h6>
-        <a class=" my-2 btn btn-warning" asp-action="Index" asp-controller="ShoppingCard">Shop</a>
+        <a class=" my-2 btn btn-warning" asp-action="AddItemsToShoppingCard" asp-controller="Orders" asp-route-id="@Model.Id">Shop</a>
   </div>
 
   
