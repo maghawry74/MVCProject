@@ -13,24 +13,63 @@
                     <div class="right-part text-uppercase fs-1 fw-bold">Shop </div>
                     <div class="lift-part mt-auto mb-auto ">
                         <a class="text-decoration-none fs-6 fw-light" asp-action="Index" asp-controller="Home">HOME</a>                        
-                        @*<i class="fa-sharp fa-arrow-right fa-sm" style="color: #e13623;"></i>*@
+                        @*<i class="fas-sharp fas-arrow-right fs-sm" style="color: #e13623;"></i>*@
                         <i class="fs-6 fw-light">SHOP</i>
                     </div>   
                 </div>                 
             </div>
         </div>
     </section>
+	<section class="search-section container ">     
+      
+      @using (Html.BeginForm("ShopIndex", "Shop", FormMethod.Get))
+      {
+           <div class="d-flex">
+            <div class="mt-4">
+                <span  class="mx-1 fs-4">Category</span>
+                @Html.TextBox("category")<input type="submit" class=" rounded m-2 p-1 btn btn-outline-secondary" value="Search" />
+            </div>
+            <div class="mt-4">
+                <span  class="mx-1 fs-4">Author</span>
+                    @Html.TextBox("author")<input type="submit" class=" rounded m-2 p-1 btn btn-outline-secondary" value="Search" />
+            </div>
+               
+            </div>                    
+      } 
+    </section>
+ 
     <section class="content container d-flex">
         <div class="content-row col-12 row">
             <!--lift-content-->
             <partial name="SecondryShop" model="@Model"/>                
 
             <!--right-content-->
-            <partial name="MainShop" model="@Model.books" />
+            @if(Model.books?.Count() == 0)
+            {
+                <div class="alert alert-danger" role="alert">
+                   No Products!
+                </div>
+                
+            }
+            else{
+            <partial name="MainShop" model="@Model" />
+            }
 
         </div>
     </section> 
+    <section class="pages">
+        <button  id="bt">next</button>
+        <ul>
+
+            <li><a class=" btn btn-primary" asp-action="ShopIndex" asp-controller="Shop" asp-route-id="1"> 1</a></li>
+            <li><a class=" btn btn-primary" asp-action="NextShop" asp-controller="Shop" asp-route-id="2"> 2</a></li>
+            <li><a class=" btn btn-primary" asp-action="NextShop" asp-controller="Shop" asp-route-id="3"> 3</a></li>
+        </ul>
+        
+        
+    </section>
 </div>
+
 <style>
     /* Title Section*/
     .shop_section {
@@ -49,10 +88,37 @@
         color:red;
     }
 </style>
-  
-     
 
-    
+@section Scripts{
+    <script src="/lib/jquery/dist/jquery.min.js">
+    </script>
+    <script type="text/javascript">
+        document.getElementById("bt").addEventListener("click", getBooks())
+            function getBooks() {
+                var books = JSON.stringify({ 'books': @Model.books });
+                console.log("reem");
+                $.ajax({
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    type: 'POST',
+                    url: '/Shop/NextShop',
+                    data: books,
+                    success: function () {
+                        alert("successfully");
+
+                    },
+                    failure: function (response) {
+
+                    }
+                });
+            }      
+
+
+    </script>
+}
+
+
+
 
 
 

@@ -7,6 +7,7 @@ namespace Kotabko.ViewsModels
         public  List<MainBookVM>? books { get; set; }
         public List<AuthorVM>? authorVMs { get; set; }
         public List<CategoryVM>? categoryVMs { get; set; }
-        
-     }
+        public int id { get; set; }
+
+    }
 }

@@ -1,6 +1,7 @@
 ﻿using Kotabko.DataAccess;
 using Kotabko.Models;
 using Kotabko.Repository.Interfaces;
+using Kotabko.ViewsModels;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
@@ -56,6 +57,25 @@ namespace Kotabko.Repository.Classes
             IEnumerable<Book> bks = _db.books.Include(b=>b.Category).Include(b=>b.Author).ToList();
             return bks;
 
+        }
+
+        public IEnumerable<Book> SearchingByAuthor(string author)
+        {
+            IEnumerable<Book> books = _db.books.Include(b => b.Category).Include(b => b.Author).Where(b => b.Author.Name.Contains(author)).ToList();
+            return books;
+        }
+
+        public IEnumerable<Book> SearchingByAuthorAndCategory(string category, string author)
+        {
+            IEnumerable<Book> books = _db.books.Include(b => b.Category).Include(b => b.Author)
+            .Where(b => b.Category.Name.Contains(category) && b.Author.Name.Contains(author)).ToList();
+            return books;
+        }
+
+        public IEnumerable<Book> SearchingByCategories(string category)
+        {
+            IEnumerable<Book> books = _db.books.Include(b => b.Category).Include(b => b.Author).Where(b=>b.Category.Name.Contains(category)).ToList();
+            return books;
         }
 
         public bool Update(Book entity)
