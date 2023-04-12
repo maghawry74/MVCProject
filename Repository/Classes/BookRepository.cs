@@ -3,7 +3,9 @@ using Kotabko.Models;
 using Kotabko.Repository.Interfaces;
 using Kotabko.ViewsModels;
 using Microsoft.EntityFrameworkCore;
+using System.Drawing.Printing;
 using System.Linq.Expressions;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Kotabko.Repository.Classes
 {
@@ -52,31 +54,13 @@ namespace Kotabko.Repository.Classes
             return bk;
         }
 
-        public IEnumerable<Book> GetAll()
+        public IEnumerable<Book> GetAll( )
         {
-            IEnumerable<Book> bks = _db.books.Include(b=>b.Category).Include(b=>b.Author).ToList();
-            return bks;
-
-        }
-
-        public IEnumerable<Book> SearchingByAuthor(string author)
-        {
-            IEnumerable<Book> books = _db.books.Include(b => b.Category).Include(b => b.Author).Where(b => b.Author.Name.Contains(author)).ToList();
+            IEnumerable<Book> books = _db.books.Include(b => b.Category).Include(b => b.Author).ToList();
             return books;
-        }
 
-        public IEnumerable<Book> SearchingByAuthorAndCategory(string category, string author)
-        {
-            IEnumerable<Book> books = _db.books.Include(b => b.Category).Include(b => b.Author)
-            .Where(b => b.Category.Name.Contains(category) && b.Author.Name.Contains(author)).ToList();
-            return books;
         }
-
-        public IEnumerable<Book> SearchingByCategories(string category)
-        {
-            IEnumerable<Book> books = _db.books.Include(b => b.Category).Include(b => b.Author).Where(b=>b.Category.Name.Contains(category)).ToList();
-            return books;
-        }
+              
 
         public bool Update(Book entity)
         {
@@ -91,6 +75,15 @@ namespace Kotabko.Repository.Classes
 
                 return false;
             }
+        }
+        public IEnumerable<Book> GetMainBooks(int id, int pageNumber)
+        {
+            IEnumerable<Book> books = _db.books.Include(b => b.Category).Include(b => b.Author)
+            .Where(b => b.CategoryId == id || id == 0)
+            .ToList()
+            .Skip((pageNumber - 1) * 6)
+            .Take(6);
+            return books;
         }
     }
 }

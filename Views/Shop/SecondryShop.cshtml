@@ -10,9 +10,10 @@
                 <ul>
                     @foreach (var item in Model.categoryVMs)
                     {
-                        <li><a href="#">@item.Name</a></li>                        
+                        <li><a href="/Shop/ShopIndex/@item.Id">@item.Name</a></li>
+
                     }
-                </ul>                   
+                </ul>
             </div>
         </div>
 
@@ -25,15 +26,15 @@
                     @foreach (var item in Model.authorVMs)
                     {
                         <li>
-                            <div><a asp-action="GetAuthor" asp-controller="Shop">@item.Name</a> </div>
+                            <div><a href="/Shop/FilterByAuthor/@item.Id">@item.Name</a> </div>
                             <div class="coun">(5) </div>
                         </li>
                     }
-                   
+
                 </ul>
 
             </div>
-        </div>       
+        </div>
 
         <div class="review col-lg-12 ">
             <div class="review-content ">
@@ -129,9 +130,9 @@
                 </ul>
 
             </div>
-            
 
-        </div>             
+
+        </div>
 
     </div>
 </div>
@@ -144,7 +145,7 @@
         box-sizing: border-box;
     }
 
-   .lift-part {
+    .lift-part {
         box-sizing: border-box;
         font-size: 12px;
         margin-top: auto;
@@ -162,7 +163,7 @@
             margin: auto 15px;
         }
 
-        
+
     /* content style*/
 
     .content {
@@ -175,7 +176,7 @@
     .lift-content {
         width: 300px;
         float: left;
-        margin-bottom: 1.618em;       
+        margin-bottom: 1.618em;
         font-size: 14px;
         line-height: 1.714;
         font-weight: 300;
@@ -183,7 +184,7 @@
     }
     /*All Elements in lift side*/
     /* 1-Gerne*/
-    .genre-content, .author-content,.review-content, .featured-content {
+    .genre-content, .author-content, .review-content, .featured-content {
         padding: 25px 40px 40px;
         border: 1px solid #e6e6e6;
         border-radius: 15px;
@@ -191,7 +192,7 @@
     }
 
 
- .genre-content span, .author-content span, .review-content span, .featured-content span {
+        .genre-content span, .author-content span, .review-content span, .featured-content span {
             margin-left: -40px;
             margin-right: -40px;
             margin-bottom: 30px;
@@ -207,29 +208,30 @@
             display: block;
             font-family: Cairo;
             line-height: 1.23;
- }
+        }
 
 
- .genre-content ul, .featured-content ul {
+        .genre-content ul, .featured-content ul {
             margin-bottom: 0;
             margin-left: 0;
             list-style: none;
- }
+        }
 
- .genre-content ul li, .featured-content ul li
- {
+            .genre-content ul li, .featured-content ul li {
                 margin-bottom: 1em;
                 line-height: 1.41575em;
                 list-style: none;
- }
- .genre-content ul li a, .author-content ul li a {
+            }
+
+                .genre-content ul li a, .author-content ul li a {
                     color: #444444;
                     text-decoration: none;
                     background-color: #00000000;
                     line-height: 1.41575em;
                     font-family: Sora;
- }
- .genre-content ul li ::before {
+                }
+
+                .genre-content ul li ::before {
                     font-family: bookory-icon;
                     -webkit-font-smoothing: antialiased;
                     -moz-osx-font-smoothing: grayscale;
@@ -242,8 +244,8 @@
                     content: "";
                     margin-right: 8px;
                     margin-top: -2px;
- }        
- 
+                }
+
     ul li a:hover {
         color: red;
     }
@@ -259,10 +261,11 @@
         list-style: none;
         margin-top: 0px;
     }
-    .author-content ul li a {
+
+        .author-content ul li a {
             flex: 1;
             color: #000000;
-    }    
+        }
     /* 4-Review Rating*/
     .rating-color {
         color: #fbc634 !important;
@@ -271,9 +274,12 @@
     .small-ratings i {
         color: #cecece;
     }
-   
+
     /* 5-Featured*/
     .side {
         border-radius: 1rem
     }
 </style>
+<script>
+
+</script>

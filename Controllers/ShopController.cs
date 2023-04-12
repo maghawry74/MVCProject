@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using Kotabko.Models;
 using Kotabko.Repository.Interfaces;
 using Kotabko.ViewsModels;
 using Microsoft.AspNetCore.Mvc;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Kotabko.Controllers
 {
@@ -20,44 +22,26 @@ namespace Kotabko.Controllers
             this.authorRepository = authorRepository;
             this.categoryRepository = categoryRepository;
         }
-        public IActionResult ShopIndex(string category,string author ,[FromRouteAttribute] int id)
+        public IActionResult ShopIndex(int id, int pageNumber = 1)
         {
-            ShopViewModel shopViewModel = new ShopViewModel();
-           
-            if (category == null && author == null)
-            {
-                shopViewModel.books = mapper.Map<List<MainBookVM>>(bookRepository.GetAll());
-                
-            }
-            else if(author != null && category == null )
-            {
-                shopViewModel.books = mapper.Map<List<MainBookVM>>(bookRepository.SearchingByAuthor(author));
-                
-            }
-            else if(category != null && author == null)
-            {
-                shopViewModel.books = mapper.Map<List<MainBookVM>>(bookRepository.SearchingByCategories(category));
-                
-            }
-            else
-            {
-                shopViewModel.books = mapper.Map<List<MainBookVM>>(bookRepository.SearchingByAuthorAndCategory(category,author));
-                
-            }
-          
+            ShopViewModel shopViewModel = new ShopViewModel();         
+            shopViewModel.books = mapper.Map<List<MainBookVM>>(bookRepository.GetMainBooks(id, pageNumber));            
             shopViewModel.categoryVMs = mapper.Map<List<CategoryVM>>(categoryRepository.GetAll());
-            shopViewModel.authorVMs = mapper.Map<List<AuthorVM>>(authorRepository.GetAll());
-            shopViewModel.id = id;
+            shopViewModel.authorVMs = mapper.Map<List<AuthorVM>>(authorRepository.GetAll());           
             return View("ShopIndex", shopViewModel);
         }
-        public IActionResult NextShop(List<MainBookVM> books)
+        public IActionResult LoadBooks(int id, int pageNumber)
         {
-           
-            return View(books);
+            ShopViewModel shopViewModel = new ShopViewModel();
+            shopViewModel.books = mapper.Map<List<MainBookVM>>(bookRepository.GetMainBooks(id, pageNumber));        
+            return PartialView("MainShop",shopViewModel);
         }
+       
         public IActionResult GetAuthor()
         {
             return View();
         }
+       
+       
     }
 }
