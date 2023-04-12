@@ -1,50 +1,51 @@
 ﻿@model MainBookVM
 <div style="width: 18rem;">
     <img src="~/imgs/@Model.Image" class="card-img-top img" alt="BookImage">
-  <div class="card-body mx-3">
-        <a class="card-title pt-2" asp-action=" " asp-controller=" " >
+    <div class="card-body mx-3">
+        <a class="card-title pt-2" asp-action=" " asp-controller=" ">
             <p class="pt-2 fw-bolder fs-5 color">
                 @Model.Title
             </p>
-        </a>        
-         <div class="d-flex align-items-center gap-1">
-            @for(int i=0; i<Model.Rate; i++){
-               <div class="d-flex mx-1">
-                 <img src="~/Icons/star.png" class="d-block" />
-               </div>                              
+        </a>
+        <div class="d-flex align-items-center gap-1">
+            @for (int i = 0; i < Model.Rate; i++)
+            {
+                <div class="d-flex mx-1">
+                    <img src="~/Icons/star.png" class="d-block" />
+                </div>
             }
-           <p class="d-block pt-2 mb-2 fs-5">@Model.Rate</p>
-         </div>
+            <p class="d-block pt-2 mb-2 fs-5">@Model.Rate</p>
+        </div>
         <a class="pt-1" asp-action="GetAuthor" asp-controller="Shop">@Model.Author?.Name</a>
         <h6 class="color pt-1">$@Model.Price</h6>
 
-        <a class=" my-2 btn btn-warning" asp-action="Index" asp-controller="ShoppingCard">Shop</a>
-  </div>  
-
+        @*<a class=" my-2 btn btn-warning" asp-action="Index" asp-controller="ShoppingCard">Shop</a>*@
         <a class=" my-2 btn btn-warning" asp-action="AddItemsToShoppingCard" asp-controller="Orders" asp-route-id="@Model.Id">Shop</a>
-  </div>
+    </div>    
+    
+</div>
 
-  
 
 
 <style>
     .img {
-        
-        height:410px;
-        border-radius:1.5rem;   
+        height: 410px;
+        border-radius: 1.5rem;
     }
-    a{
+
+    a {
         color: #999999;
         text-decoration: none;
     }
-    .color{
-        color:black;
+
+    .color {
+        color: black;
     }
-    .btn-color{
+
+    .btn-color {
         color: #F65D4E;
     }
-    </style>
-        
+</style>
 
-       
-   
+
+
