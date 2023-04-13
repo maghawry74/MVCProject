@@ -4,6 +4,10 @@
     ViewData["Title"] = "BookDetails";
 }
 <style>
+    a{
+        text-decoration:none;
+
+    }
     .card {
         max-width: 600px;
         border-radius: 15px;
@@ -62,10 +66,10 @@
                 <h3 class="  fs-1 fw-bold">
                     @Model.book.Title
                 </h3>
-                <p class="text-secondary p-1 py-1">
+                <a class="text-secondary p-1 py-1" asp-action="AuthorDetails" asp-controller="Shop" asp-route-id="@Model.book.Author.Id">
                     Author:<span class="text-danger mx-2">@Model.book.Author.Name</span>
 
-                </p>
+                </a>
 
                 <div class="d-flex align-items-center gap-1">
                     @for (int i = 0; i < Model.book.Rate; i++)
@@ -102,7 +106,7 @@
                 </div>
 
                 <hr />
-                <a class=" my-2 btn btn-warning text-white" asp-action="AddItemsToShoppingCard" asp-controller="Orders" asp-route-id="@Model.Id">Shop</a>
+                <a class=" my-2 btn btn-warning text-white" asp-action="AddItemsToShoppingCard" asp-controller="Orders" asp-route-id="@Model.book.Id">Shop</a>
             </div>
         </div>
     </div>
