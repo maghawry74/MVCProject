@@ -17,10 +17,10 @@
             <p class="d-block pt-2 mb-2 fs-5">@Model.Rate</p>
         </div>
         <a class="pt-1" asp-action="AuthorDetails" asp-controller="Shop" asp-route-id="@Model.Author.Id">@Model.Author?.Name</a>
-        <h6 class="color pt-1">$@Model.Price</h6>       
+        <h6 class="color pt-1">$@Model.Price</h6>
         <a class=" my-2 btn btn-warning text-white" asp-action="AddItemsToShoppingCard" asp-controller="Orders" asp-route-id="@Model.Id">Shop</a>
-    </div>    
-    
+    </div>
+
 </div>
 
 
