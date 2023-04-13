@@ -1,10 +1,12 @@
 ﻿using Kotabko.Models;
 using Kotabko.Repository.Classes;
 using Kotabko.Repository.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kotabko.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class CategoryController : Controller
     {
         ICategoryRepository CategoryRepository;

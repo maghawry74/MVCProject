@@ -2,6 +2,8 @@
 using Kotabko.ViewModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Rewrite;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Kotabko.Controllers
 {
@@ -42,6 +44,8 @@ namespace Kotabko.Controllers
                 if (result.Succeeded)
                 {
                    await SignInManager.SignInAsync(userModel,false);
+                    
+                    await  UserManager.AddToRoleAsync(userModel,"User");
                     return RedirectToAction("Login");
                 }
                 else
@@ -78,6 +82,7 @@ namespace Kotabko.Controllers
                   var result= await SignInManager.PasswordSignInAsync(userModel,loginViewModel.password, loginViewModel.remmemberMe, false);
                   if(result.Succeeded)
                     {
+
                         //redirect to action 
                         return RedirectToAction("Index", "Home");
                     }
