@@ -1,0 +1,94 @@
+﻿@model AuthorDetailsVM
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-sm-12 col-md-6">
+            <div class="card border  p-3">
+                <img src="~/imgs/@Model.Image" class="card-img-top img" alt="BookImage">
+            </div>
+        </div>
+        <div class="col-lg-6 col-sm-12 col-md-6">
+            <div class="card border  p-3">
+                <span class="available">
+                    Best Author
+                </span>
+
+                <h3 class="  fs-1 fw-bold">
+                    @Model.Name
+                </h3>
+                <p class="text-secondary p-2 py-1">
+                    Country:<span class="text-danger mx-2 my-2 fw-bold">France</span>
+                </p>
+                <div class="d-flex align-items-center gap-1">
+                    @for (int i = 0; i < 5; i++)
+                    {
+                        <div class="d-flex mx-1">
+                            <img src="~/Icons/star.png" class="d-block" />
+                        </div>
+                    }
+                </div>
+                <hr />
+                <h4 class="pt-2 text-secondary">
+                    About Us
+                </h4>
+                <p class="text-secondary mt-3">
+                    @Model.Description
+                </p>
+                <hr />
+
+                <p class="text-secondary p-1">
+                    Contact Us
+                </p>
+
+                <div>
+                    <div class="d-flex mt-1 ">
+                        <img class="m-2" src="~/icons/facebook.png" />
+                        <img class="m-2" src="~/icons/instagram.png" />
+                        <img class="m-2" src="~/icons/twitter.png" />
+                    </div>
+                </div>
+
+                <hr />
+                <a class=" my-2 btn btn-danger text-white" asp-action="ShopIndex" asp-controller="Shop">View Shop</a>
+            </div>
+        </div>
+    </div>
+</div>
+@if (Model.AurhorBooks.Count() == 0)
+{
+    <div class="m-3 p-5"><h1>New Author, No Books Avilable Now!</h1></div>
+
+}
+else
+{
+    <partial name="FeaturedBooks" model="@Model.AurhorBooks" />
+}
+<style>
+    .img {
+        min-height: 535px;
+        max-height: 535px;
+    }
+
+    .card {
+        max-width: 600px;
+        border-radius: 15px;
+        border-color: #e6e6e6;
+    }
+
+    .price {
+        color: #f65d4e;
+    }
+
+    .available {
+        background-color: rgba(130,209,117,.2);
+        color: #82d175;
+        border-radius: 3px;
+        width: 100px;
+    }
+
+    .Notavailable {
+        background-color: rgba(213,73,73,0.04);
+        color: red;
+        border-radius: 3px;
+        width: 100px;
+    }
+</style>

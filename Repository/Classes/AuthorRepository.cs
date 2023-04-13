@@ -46,8 +46,7 @@ namespace Kotabko.Repository.Classes
         public IEnumerable<Author> GetAll()
         {
             return db.authors.ToList();
-        }
-
+        }        
         public bool Update(Author entity)
         {
             try
@@ -61,5 +60,10 @@ namespace Kotabko.Repository.Classes
                 return false;
             }
         }
+        public IEnumerable<Author> GetAuthorBooks(int id)
+        {
+            return db.authors.Where(a=>a.Id == id).ToList();
+        }
+
     }
 }

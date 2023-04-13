@@ -1,0 +1,110 @@
+﻿@model BookDetailaViewModel
+
+@{
+    ViewData["Title"] = "BookDetails";
+}
+<style>
+    .card {
+        max-width: 600px;
+        border-radius: 15px;
+        border-color: #e6e6e6;
+    }
+
+    .price {
+        color: #f65d4e;
+    }
+
+    .available {
+        background-color: rgba(130,209,117,.2);
+        color: #82d175;
+        border-radius: 3px;
+        width: 70px;
+    }
+
+    .Notavailable {
+        background-color: rgba(213,73,73,0.04);
+        color: red;
+        border-radius: 3px;
+        width: 100px;
+    }
+    .img{
+        min-height: 600px;
+        max-height: 600px;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-sm-12 col-md-6">
+
+
+            <div class="card border  p-3">
+                <img src="~/imgs/@Model.book.Image" class="card-img-top img" alt="BookImage">
+            </div>
+        </div>
+        <div class="col-lg-6 col-sm-12 col-md-6">
+
+
+            <div class="card border  p-3">
+                @if (@Model.book.IsAvaiable == true)
+                {
+                    <span class="available">
+                        Available
+                    </span>
+                }
+                else
+                {
+                    <span class="Notavailable">
+                        Not Available
+                    </span>
+                }
+
+
+                <h3 class="  fs-1 fw-bold">
+                    @Model.book.Title
+                </h3>
+                <p class="text-secondary p-1 py-1">
+                    Author:<span class="text-danger mx-2">@Model.book.Author.Name</span>
+
+                </p>
+
+                <div class="d-flex align-items-center gap-1">
+                    @for (int i = 0; i < Model.book.Rate; i++)
+                    {
+                        <div class="d-flex mx-1">
+                            <img src="~/Icons/star.png" class="d-block" />
+                        </div>
+                    }
+                    <p class="d-block pt-2 mb-2 fs-5">@Model.book.Rate</p>
+
+                </div>
+                <hr />
+
+                <h4 class="pt-2 price">
+                    $@Model.book.Price
+                </h4>
+
+                <p class="text-secondary mt-3">
+                    @Model.book.Description
+                </p>
+                <hr />
+
+                <p class="text-secondary p-1">
+                    Category:<span class="text-danger">@Model.book.Category.Name</span>
+
+                </p>
+
+                <div>
+                    <div class="d-flex mt-1 ">
+                        <img class="m-2" src="~/icons/facebook.png" />
+                        <img class="m-2" src="~/icons/instagram.png" />
+                        <img class="m-2" src="~/icons/twitter.png" />
+                    </div>
+                </div>
+
+                <hr />
+                <a class=" my-2 btn btn-warning text-white" asp-action="AddItemsToShoppingCard" asp-controller="Orders" asp-route-id="@Model.Id">Shop</a>
+            </div>
+        </div>
+    </div>
+
+

@@ -1,7 +1,6 @@
 ﻿@model ShopViewModel
 @{
-    ViewData["Title"] = "ShopIndex";
-    SelectList categoryList = new SelectList(Model.categoryVMs, "Id", "Name");
+    ViewData["Title"] = "ShopIndex";    
 }
 
 
@@ -56,7 +55,7 @@
                                 @foreach (var item in Model.authorVMs)
                                 {
                                     <li>
-                                        <div><a href="/Shop/FilterByAuthor/@item.Id">@item.Name</a> </div>
+                                        <div><a href="/Shop/AuthorDetails/@item.Id">@item.Name</a> </div>
                                         <div class="coun">(5) </div>
                                     </li>
                                 }

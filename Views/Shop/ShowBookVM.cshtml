@@ -2,7 +2,7 @@
 <div style="width: 18rem;">
     <img src="~/imgs/@Model.Image" class="card-img-top img" alt="BookImage">
     <div class="card-body mx-3">
-        <a class="card-title pt-2" asp-action=" " asp-controller=" ">
+        <a class="card-title pt-2" asp-action="BookDetails" asp-controller="Shop" asp-route-id="@Model.Id">
             <p class="pt-2 fw-bolder fs-5 color">
                 @Model.Title
             </p>
@@ -16,11 +16,9 @@
             }
             <p class="d-block pt-2 mb-2 fs-5">@Model.Rate</p>
         </div>
-        <a class="pt-1" asp-action="GetAuthor" asp-controller="Shop">@Model.Author?.Name</a>
-        <h6 class="color pt-1">$@Model.Price</h6>
-
-        @*<a class=" my-2 btn btn-warning" asp-action="Index" asp-controller="ShoppingCard">Shop</a>*@
-        <a class=" my-2 btn btn-warning" asp-action="AddItemsToShoppingCard" asp-controller="Orders" asp-route-id="@Model.Id">Shop</a>
+        <a class="pt-1" asp-action="AuthorDetails" asp-controller="Shop" asp-route-id="@Model.Author.Id">@Model.Author?.Name</a>
+        <h6 class="color pt-1">$@Model.Price</h6>       
+        <a class=" my-2 btn btn-warning text-white" asp-action="AddItemsToShoppingCard" asp-controller="Orders" asp-route-id="@Model.Id">Shop</a>
     </div>    
     
 </div>

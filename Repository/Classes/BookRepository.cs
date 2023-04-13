@@ -5,6 +5,7 @@ using Kotabko.ViewsModels;
 using Microsoft.EntityFrameworkCore;
 using System.Drawing.Printing;
 using System.Linq.Expressions;
+using static System.Reflection.Metadata.BlobBuilder;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Kotabko.Repository.Classes
@@ -83,6 +84,12 @@ namespace Kotabko.Repository.Classes
             .ToList()
             .Skip((pageNumber - 1) * 6)
             .Take(6);
+            return books;
+        }
+
+        public IEnumerable<Book> GetBooksAuthor(int id)
+        {
+            IEnumerable<Book> books = _db.books.Include(b => b.Author).Where(a=>a.AuthorId == id).ToList();
             return books;
         }
     }

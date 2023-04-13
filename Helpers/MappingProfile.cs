@@ -9,6 +9,7 @@ namespace Kotabko.Helpers
         public MappingProfile()
         {
             CreateMap<AuthorVM, Author>().ReverseMap();
+            CreateMap<AuthorDetailsVM, Author>().ReverseMap();
             CreateMap<BookViewModel, Book>().ReverseMap();
             CreateMap<MainBookVM, Book>().ReverseMap();
             CreateMap<CategoryVM, Category>().ReverseMap();

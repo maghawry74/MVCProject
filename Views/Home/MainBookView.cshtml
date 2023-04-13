@@ -7,16 +7,20 @@
         height:auto;
         border-radius:1rem   
     }
+    a{
+        text-decoration:none;
+        color:black;
+    }
     
 </style>
         <img src="~/imgs/@Model.Image" class ="d-block  cover" />
         <div class="d-flex flex-column justify-content-around gap-2">
-            <h5>@Model.Title</h5>
+            <a asp-action="BookDetails" asp-controller="Shop" asp-route-id="@Model.Id"><h5>@Model.Title</h5></a>
             <div class="d-flex align-items-center gap-1">
             <img src="./Icons/star.png" class="d-block"/>
             <p class="d-block">@Model.Rate</p>
             </div>
-            <h5>@Model.Author?.Name</h5>
+            <a asp-action="AuthorDetails" asp-controller="Shop" asp-route-id="@Model.Author.Id"><h5>@Model.Author?.Name</h5></a>
             <h6>$@Model.Price</h6>
     </div>
 
