@@ -41,7 +41,7 @@ namespace Kotabko.Controllers
                 IdentityResult result=await UserManager.CreateAsync(userModel,UserViewModel.password);
                 if (result.Succeeded)
                 {
-                   await SignInManager.SignInAsync(userModel,false);
+                   await SignInManager.SignInAsync(userModel,false);                    
                     return RedirectToAction("Login");
                 }
                 else
