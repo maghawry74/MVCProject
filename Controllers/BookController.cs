@@ -2,11 +2,13 @@
 using Kotabko.Models;
 using Kotabko.Repository.Interfaces;
 using Kotabko.ViewsModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace Kotabko.Controllers
 {
-    
+    [Authorize(Roles = "Admin")]
     public class BookController : Controller
     {
         IBookRepository bookRepository;

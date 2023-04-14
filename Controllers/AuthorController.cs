@@ -1,9 +1,12 @@
 ﻿using Kotabko.Models;
 using Kotabko.Repository.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace Kotabko.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AuthorController : Controller
     {
         IAuthorRepository AuthorRepository;
